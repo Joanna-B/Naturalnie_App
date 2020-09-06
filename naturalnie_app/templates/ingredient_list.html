@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="recipes-content-header">
+<h2 style="color: limegreen ">Składniki naturalne</h2>
+    <ul class="recipes-content" style="...">
+    {% for ingredient in ingredients %}
+        {% if ingredient.ingredient_category == 1 %}
+        <li> <h5> {{ ingredient.name }} </h5> {{ ingredient.description }}</li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+</div>
+<hr>
+
+<div>
+<h2 style="color: crimson">Składniki syntetyczne</h2>
+    <ul style="line-height: 40px">
+    {% for ingredient in ingredients %}
+        {% if ingredient.ingredient_category == 2 %}
+        <li> <h5>{{ ingredient.name }}</h5> {{ ingredient.description }}</li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+</div>
+
+
+{% endblock %}

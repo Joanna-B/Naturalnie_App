@@ -15,7 +15,25 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+from naturalnie_app.views import IngredientCheck, IngredientList, IngredientAdd, IngredientDelete, \
+    RecipeList, LoginView, AddUser, UserProfile, LogoutView
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', IngredientCheck.as_view(), name="ingredient-check"),
+    path('skladniki/', IngredientList.as_view(), name="ingredient-list"),
+    path('dodaj_skladnik/', IngredientAdd.as_view(), name="ingredient-add"),
+    path('usun_skladnik/', IngredientDelete.as_view(), name="ingredient-delete"),
+    path('przepisy/', RecipeList.as_view(), name="recipe-list"),
+    path('login/', LoginView.as_view(), name="login"),
+    path('register/', AddUser.as_view(), name="register"),
+    path('profil/', UserProfile.as_view(), name="profile"),
+    path('logout/', LogoutView.as_view(), name="logout"),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

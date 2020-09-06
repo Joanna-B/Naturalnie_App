@@ -1,0 +1,39 @@
+{% extends "base.html" %}{% block content %}
+<p>
+<h3> Wklej skład: </h3>
+<form method="get">
+    {{ form }}
+    <input type="submit" value="Szukaj">
+</form>
+</p>
+
+{% if ingredients is not None %}
+<p>
+    <ul>
+    {% for ingredient in ingredients %}
+        {% if ingredient.ingredient_category == 1 %}
+            <li class="natural-products">{{ ingredient.name }} {{ ingredient.description }} </li>
+        {% endif %}
+        {% if ingredient.ingredient_category == 2 %}
+            <li class="synthetic-products">{{ ingredient.name }} {{ ingredient.description }} </li>
+        {% endif %}
+
+    <!--
+        {% if ingredient.ingredient_category is None %}
+    Nie udało się znaleźć w bazie:
+                <li> {{ ingredient }} </li>
+        {% endif %}
+-->
+    {% empty %}
+        Nie znaleziono składników w bazie.
+    {% endfor %}
+
+{% endif %}
+
+
+
+    </ul>
+</p>
+
+
+{% endblock %}

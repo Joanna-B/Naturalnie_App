@@ -1,0 +1,351 @@
+/*------------------------------*/
+/*---- Main style ----*/
+/*------------------------------*/
+:root {
+  --link-color: #14e0bb;
+  --light-link-color: #000000;
+  --background-color: #a7fca7;
+  --lighter-background-color: #fbffd4;
+  --lighter-text-color: #303834;
+  --dark-text: #000000;
+  --blue: #007bff;
+  --yellow: #ffc107;
+  --green: #1e7e34;
+  font-size: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+body {
+  font-family: "Arial", sans-serif;
+  font-weight: 400;
+  /*background: repeat url("/static/images/image.jpg");*/
+}
+
+p {
+  font-size: 1.2rem;
+}
+
+.bg-light {
+background: #cacaca;
+}
+
+.noPadding {
+  padding: 0;
+}
+.noMargin {
+  margin: 0;
+}
+.center {
+  text-align: center;
+}
+.btn-color {
+  background-color: var(--link-color);
+  color: var(--light-link-color);
+  font-weight: 600;
+  font-size: 20px;
+  padding: 8px 18px;
+}
+.btn-color a {
+  text-decoration: none;
+  color: var(--light-link-color);
+}
+
+.btn-color:hover {
+  opacity: .8;
+}
+.label-size {
+  font-size: 1.4rem;
+  color: var(--background-color);
+}
+hr {
+  border: 0;
+  margin-bottom: 4px;
+  clear:both;
+  display:block;
+  width: 100%;
+  background-color:var(--background-color);
+  height: 1px;
+}
+
+.border-dashed{
+  border: .5px dashed  var(--lighter-background-color);
+  background: var(--light-link-color);
+ }
+
+ .borderless td, .borderless th {
+  border: none;
+}
+
+.border-3 {
+  border-width:3px !important;
+  border-bottom-color: #cacaca !important;
+}
+
+.view-height {
+  min-height: 82.9vh;
+}
+
+.text-color-darker {
+  color: var(--dark-text);
+}
+
+.text-color-lighter {
+  color: var(--lighter-text-color);
+}
+
+.color-header {
+  color: var(--dark-text);
+}
+
+.nav-link.color-header {
+  color: var(--link-color) !important;
+}
+
+.width-medium {
+width: 90% !important;
+margin: 0 auto !important;
+}
+
+/*------------------------------*/
+/*---- Paddings ----*/
+/*------------------------------*/
+
+.padding-large {
+  padding: 150px 0;
+}
+
+.padding-medium {
+  padding: 80px 0;
+}
+
+.padding-small {
+  padding: 40px 0;
+}
+
+/*------------------------------*/
+/*---- Main nav section ----*/
+/*------------------------------*/
+
+.page-header {
+  background: var(--background-color);
+  box-shadow: 0px -4px 5px 0px #a7fca7;
+}
+
+.nav-link {
+  color: var(--light-link-color)!important;
+  font-size: 1.1rem;
+}
+
+.page-header .nav .nav-item .active,
+.page-header .nav .nav-item a:hover{
+    color: var(--dark-text)!important;
+}
+
+.main-logo {
+  font-family: "Arial";
+  display: inline-block;
+  color: var(--light-link-color)!important;
+  margin-top: 10px;
+  font-size: 2.7rem;
+  font-weight: 600;
+}
+
+.main-logo-smaller {
+  font-size: 2rem;
+}
+
+.main-logo span {
+  color: var(--link-color);
+}
+
+
+/*------------------------------*/
+/*---- More section----*/
+/*------------------------------*/
+
+.section-more {
+  background: var(--background-color);
+  color: var(--light-link-color);
+}
+
+/*------------------------------*/
+/*---- Details section----*/
+/*------------------------------*/
+
+.details {
+  color: var(--lighter-background-color);
+}
+
+.icon-details {
+  padding: 2rem 0;
+  font-size: 4rem;
+  color: var(--lighter-text-color);
+}
+
+
+/*------------------------------*/
+/*---- Story section ----*/
+/*------------------------------*/
+
+.div-img {
+  height: 180px;
+  width: 180px;
+}
+
+/*------------------------------*/
+/*---- Last info ----*/
+/*------------------------------*/
+
+.last-info-section {
+  background: var(--lighter-background-color);
+  color: var(--light-link-color);
+  font-size: 1.2rem;
+}
+
+.last-info-section .form-control {
+  height: 42px;
+}
+
+.last-info-section .btn-color {
+  padding: 0 20px;
+}
+
+.last-info-section li {
+  font-size: 1.2rem;
+  margin: 4px 0;
+}
+
+
+/*------------------------------*/
+/*---- Footer section ----*/
+/*------------------------------*/
+
+.footer-section{
+  background: var(--background-color);
+  box-shadow: 0px -4px 5px 0px #a7fca7;
+}
+
+.footer-text-color {
+  color: var( --dark-text);
+}
+
+/*------------------------------*/
+/*---- Recipes section ----*/
+/*------------------------------*/
+
+.icon-users {
+  font-size: 3rem;
+  padding: 0 5px 0 20px;
+  color: var(--link-color);
+}
+
+.orange-line {
+  height: .5rem;
+  background: var(--link-color);
+}
+
+.recipes-section {
+  background: var(--light-link-color);
+}
+
+
+/*------------------------------*/
+/*---- Dashboard ----*/
+/*------------------------------*/
+
+.dashboard-nowrap {
+  flex-wrap: nowrap;
+  margin: 0;
+}
+.long-bg {
+  background: var(--lighter-background-color);
+  display: inline-block;
+	vertical-align: top;
+	min-height: 100%;
+}
+.dashboard-section .nav-item {
+  display: block;
+  width: 260px;
+  margin-bottom: 20px;
+}
+.dashboard-section .nav-item i.fa-angle-right {
+  display: none;
+}
+.dashboard-section .nav-item .nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dashboard-section .nav-item a {
+  font-size: 1.5rem;
+  border-left: 5px solid transparent;
+}
+.dashboard-section .nav-item a.active,
+.dashboard-section .nav-item a:hover {
+  border-left: 5px solid var(--link-color);
+}
+.dashboard-section .nav-item a.active i.fa-angle-right,
+.dashboard-section .nav-item:hover i.fa-angle-right {
+  display: block;
+  color: var(--link-color)!important;
+}
+
+.circle-div {
+  border: 3px solid var(--link-color);
+  border-radius: 50%;
+  height: 39px;
+  width: 45px;
+  padding-top: 1px;
+}
+
+.icon-user {
+  font-size: 2rem;
+  color: var(--link-color);
+}
+
+
+
+.dashboard-content-title span {
+  color: var(--link-color);
+}
+
+/*------------------------------*/
+/*---- Recipe ----*/
+/*------------------------------*/
+
+.recipes-content {
+  margin-top: 20px;
+}
+.recipes-text {
+  font-size: .9rem;
+  margin-bottom: 0;
+
+}
+.recipes-content .form-group.row {
+  display: flex;
+  align-items: center;
+}
+.recipes-content-header {
+  margin-bottom: 50px;
+}
+
+
+/*------------------------------*/
+/*---- li ----*/
+/*------------------------------*/
+
+.natural-products {
+  color: #12b854
+}
+
+.synthetic-products {
+  color: #f5390a
+}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Przepisy na domowe kosmetyki:</h2>
+
+
+<div class="recipes-content">
+        <table class="table border-bottom">
+            <thead>
+            <tr class="d-flex">
+                <th class="col-2"> </th>
+                <th class="col-2">TYTUŁ</th>
+                <th class="col-3">SKŁADNIKI</th>
+                <th class="col-4">OPIS</th>
+            </tr>
+            </thead>
+
+            {% for recipe in recipes %}
+            <tr class="d-flex">
+                <th class="col-2"><img class="div-img" src=" {{ recipe.picture.url }} "></th>
+                <td class="col-2" style="align-content: center">
+                    <h3>{{recipe.title}}</h3>
+                </td>
+                <td class="col-3">
+                    <h5>{{recipe.ingredients}}</h5>
+                </td>
+                <td class="col-4">
+                    {{recipe.description}}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+</div>
+
+<!--
+<div class="pagination justify-content-center">
+    <span class="step-links">
+        {% if recipes.has_previous %}
+            <a href="?page={{ recipes.previous_page_number }}"> < poprzednia</a>
+        {% endif %}
+        {% for num in recipes.paginator.page_range %}
+            {% ifequal num recipes.number %}
+             <span class="current"><b>{{ num }}</b></span>
+            {% else %}
+             <a href="?page={{ num }}"> | {{ num }} | </a>
+            {% endifequal %}
+        {% endfor %}
+        {% if recipes.has_next %}
+            <a href="?page={{ recipes.next_page_number }}">następna > </a>
+        {% endif %}
+    </span>
+</div>
+
+-->
+{% endblock %}
