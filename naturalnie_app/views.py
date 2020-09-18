@@ -10,18 +10,32 @@ from django.db.models import Q
 from django.contrib.auth import login, authenticate, logout
 
 
+
 class IngredientCheck(TemplateView):
     template_name = 'ingredient_check.html'
     model = Ingredient
-
     def get_context_data(self, **kwargs):
         if self.request.GET:
             form = IngredientCheckForm(self.request.GET)
             if form.is_valid():
-                composition2 = form.cleaned_data['composition'].replace(",", " ").replace("/", " ").replace("*", " ")
-                composition_lower = composition2.lower()
+                composition2 = form.cleaned_data['composition'].replace(" ", "@")
+                def unwanted_signs(text):
+                    for ch in ['\\', '`', '*', '_', '{', '}', '[', ']', '(', ')', '>', '#', '+', '.', '!', '$', '\'',
+                               ',']:
+                        if ch in text:
+                            text = text.replace(ch, " ")
+                    return text
+                composition_no_signs = unwanted_signs(composition2)
+                composition_lower = composition_no_signs.lower()
                 composition3 = composition_lower.split()
-
+                composition4 = []
+                for i in composition3:
+                    new_i = i.replace("@", " ")
+                    composition4.append(new_i)
+                composition5 = []
+                for i in composition4:
+                    new_i = i.strip()
+                    composition5.append(new_i)
                 data_ing1 = Ingredient.objects.values_list('name', flat=True)
                 data_ing2 = Ingredient.objects.values_list('second_name', flat=True)
                 data_ing3 = Ingredient.objects.values_list('third_name', flat=True)
@@ -29,23 +43,18 @@ class IngredientCheck(TemplateView):
                 data_ing1list2 = list(data_ing2)
                 data_ing1list3 = list(data_ing3)
                 data_ing_list = data_ing1list1 + data_ing1list2 + data_ing1list3
-
                 data_ing_list_clean = filter(None, data_ing_list)
-
                 db_ing = []
                 for i in data_ing_list_clean:
                         ingredient = i.lower()
                         db_ing.append(ingredient)
-
                 ingredients_list = []
                 unknown_products = []
-                for i in composition3:
+                for i in composition5:
                     if i in db_ing:
                         ingredients_list.append(i)
                     else:
                         unknown_products.append(i)
-
-
                 ingredients_in_db = []
                 for i in ingredients_list:
                     ingredient = Ingredient.objects.get(
@@ -54,20 +63,21 @@ class IngredientCheck(TemplateView):
                         Q(third_name__iexact=i)
                     )
                     ingredients_in_db.append(ingredient)
-
                 ingredients = []
                 [ingredients.append(i) for i in ingredients_in_db if i not in ingredients]
 
-                #ingredients.append(unknown_products)
-
-
             else:
                 ingredients = []
+                unknown_products = []
+
         else:
             form = IngredientCheckForm()
             ingredients = None
+            unknown_products = None
+
         ctx = {"form": form,
                "ingredients": ingredients,
+               "unknown_products": unknown_products,
                }
         return ctx
 

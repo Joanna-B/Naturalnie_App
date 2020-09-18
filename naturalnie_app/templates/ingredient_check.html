@@ -7,6 +7,7 @@
 </form>
 </p>
 
+
 {% if ingredients is not None %}
 <p>
     <ul>
@@ -18,20 +19,17 @@
             <li class="synthetic-products">{{ ingredient.name }} {{ ingredient.description }} </li>
         {% endif %}
 
-    <!--
-        {% if ingredient.ingredient_category is None %}
-    Nie udało się znaleźć w bazie:
-                <li> {{ ingredient }} </li>
-        {% endif %}
--->
     {% empty %}
         Nie znaleziono składników w bazie.
     {% endfor %}
-
 {% endif %}
 
-
-
+{% if unknown_products is not None %}
+    Skontaktuj się z nami! Chętnie powiększymy naszą bazę o:
+    {% for product in unknown_products %}
+        <li class="unknown-products">{{ product }} </li>
+    {% endfor %}
+{% endif %}
     </ul>
 </p>
 
